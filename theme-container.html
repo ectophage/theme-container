@@ -206,6 +206,18 @@
             strong {
             color: {color:bold and italics};
             }
+            
+            h1{
+                text-align:center;
+                text-transform:uppercase;
+                font-weight:700;
+                margin:4px 10px;
+            }
+            
+            h2{
+                text-transform:uppercase;
+                font-size:.9rem;
+            }
 
             /* MAKE ABSOLUTELY EVERYTHING THE SAME SIZE */
 
@@ -321,8 +333,13 @@
             
             .quote{
                 text-align:left;
-                margin:-44px 0 -20px 40px;
+                margin:-34px 0 -20px 28px;
                 top:0;
+            }
+            
+            .quote h1{
+                text-transform:none;
+                text-align:left;
             }
 
             /* PHOTOS & PHOTOSETS */
@@ -419,7 +436,7 @@
         {block:Posts}
         <div class="entry {block:IndexPage}b{select:post size}{/block:IndexPage}{block:PermalinkPage}b{select:permalink post size}{/block:PermalinkPage}" id="{PostID}">
 
-            {block:Text}<div class="txt">{block:Title}<h3 style="margin-top:0;">{Title}</h3>{/block:Title}{Body}</div>{/block:Text}
+            {block:Text}<div class="txt">{block:Title}<h1>{Title}</h1>{/block:Title}{Body}</div>{/block:Text}
 
             {block:Link}<div class="txt"><a href="{URL}" class="link" {Target}><h3 style="margin-top:0;">{Name}</h3></a>
             {block:Description}{Description}{/block:Description}</div>{/block:Link}
@@ -441,7 +458,7 @@
             <!-- / QUOTE POST -->
             
             <!-- CHAT POST -->
-            {block:Chat}{block:Title}<h3>{Title}</h3>{/block:Title}
+            {block:Chat}{block:Title}<h1>{Title}</h1>{/block:Title}
 
             <div class="txt"><div style="padding:10px 0px 10px 0px">{block:Lines}<li style="list-style-type:none;">{block:Label}<b>{Label}</b>{/block:Label} {Line}</li>{/block:Lines}</ul></div></div>{/block:Chat}
             <!-- / CHAT POST -->
@@ -452,7 +469,6 @@
             <!-- / VIDEO POST -->
 
             <!-- AUDIO -->
-
             {block:Audio}<div class="audio">
             <div class="button"></div>
             {block:AudioPlayer}{block:ifblackaudioplayer}{AudioPlayerBlack}{/block:ifblackaudioplayer}{block:ifnotblackaudioplayer}{AudioPlayerWhite}{/block:ifnotblackaudioplayer}{/block:AudioPlayer}
@@ -494,19 +510,22 @@
                 <!-- DATE -->
                 <a href="{Permalink}" class="date"><i class="fas fa-calendar"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+                <!-- REBLOGGED FROM SECTION --->
+                {block:RebloggedFrom}
+                <!-- REBLOGGED FROM -->
+                <a href="{ReblogParentURL}"><i class="fas fa-retweet"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <!-- SOURCE -->
-                <a href="{Permalink}"><i class="fas fa-code"></i></a>
-
-                <!-- <i class="{text:font awesome tag decoration}"></i> <i class="{text:font awesome tag decoration}"></i> <i class="{text:font awesome tag decoration}"></i>
-              <a href="{Permalink}" class="date"><strong>{DayOfMonthWithZero}</strong> {Month}</a>
-                 <a href="{Permalink}" class="notes">NOTES <strong>{NoteCount}</a></strong> -->
+                <a href="{ReblogRootURL}"><i class="fas fa-code"></i></a>
+                {/block:RebloggedFrom}
 
             </div> <!-- MESSY ASS PERMALINK FOOTER -->
         
             <!-- TAGS -->
+            <div class="tags">
+            {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
+            </div><!-- TAGS -->
             
-            <div class="tags">{block:PermalinkPage}{block:RebloggedFrom}<a href="{ReblogParentURL}">VIA</a> / <a href="{ReblogRootURL}">SOURCE</a> {/block:RebloggedFrom}{/block:PermalinkPage}{block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}</div><!-- TAGS -->
-        </div><!-- FOOTER WRAPPER -->
+        </div><!-- FOOTER -->
 
 
         <style type="text/css">.content .entry {border-radius:0;}</style>
