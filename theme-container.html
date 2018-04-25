@@ -171,6 +171,7 @@
         overflow-y: scroll;
         overflow-x:hidden;
         {block:ifSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifSidebarShadow}
+        z-index:100;
         }
 
         /* basically the footer but smaller */
@@ -320,8 +321,10 @@
             text-shadow:0 2px 2px rgba(0,0,0,.4);
         }
 
-        #pagination{
+        #pagination .fas{
+            color:{color:link};
             font-size:1.2rem;
+            text-shadow:0 2px 2px rgba(0,0,0,.2);
         }
 
 
@@ -418,20 +421,20 @@
         <div class="footer-wrapper">
             <div class="footer">
                 <!-- PERMALINK -->
-                <a href="{Permalink}"><i class="fas fa-link"></i></a>
+                <a href="{Permalink}" title="permalink"><i class="fas fa-link"></i></a>
 
                 <!-- NOTES -->
-                <a href="{Permalink}"><i class="fas fa-sticky-note"></i></a>
+                <a href="{Permalink}" title="{NoteCountWithLabel}"><i class="fas fa-sticky-note"></i></a>
 
                 <!-- DATE -->
-                <a href="{Permalink}" class="date"><i class="fas fa-calendar"></i></a>
+                <a href="{Permalink}" title="posted {TimeAgo}"><i class="fas fa-calendar"></i></a>
 
                 <!-- REBLOGGED FROM SECTION --->
                 {block:RebloggedFrom}
                 <!-- REBLOGGED FROM -->
-                <a href="{ReblogParentURL}"><i class="fas fa-retweet"></i></a>
+                <a href="{ReblogParentURL}" title="reblogged from {ReblogParentName}"><i class="fas fa-retweet"></i></a>
                 <!-- SOURCE -->
-                <a href="{ReblogRootURL}"><i class="fas fa-code"></i></a>
+                <a href="{ReblogRootURL}" title="posted by {ReblogRootName}"><i class="fas fa-code"></i></a>
                 {/block:RebloggedFrom}
 
             </div> <!-- MESSY ASS PERMALINK FOOTER -->
