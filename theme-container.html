@@ -16,7 +16,6 @@
     <!-- LITTLE THINGS -->
     <meta name="color:accent" content="#009688"/>
     <meta name="text:font awesome tag decoration" content="fas fa-hashtag"/>
-    <meta name="color:blockquote" content="#009688"/>
 
     <!-- CONTENT POSITION; DIMENSIONS -->
     <meta name="text:content top" content="100px"/>
@@ -48,6 +47,10 @@
     <!-- SIDEBAR FORMATTING -->
     <meta name="color:sidebar background" content="#f6f6f6"/>
     <meta name="color:sidebar border" content="#009688"/>
+
+    <!-- FOOTER STUFF -->
+    <meta name="color:footer gradient left" content="#009688"/>
+    <meta name="color:footer gradient right" content="#4CAF50"/>
 
 
     <!-- THIS MAKES PHOTOSETS WORK, DON'T FUCK WITH IT
@@ -191,7 +194,7 @@
             }
 
             blockquote {
-            border-left: 1px solid {color:blockquote};
+            border-left: 1px solid {color:accent};
             padding: 0 0 0 10px;
             margin: 0 0 0 10px;
             }
@@ -206,14 +209,14 @@
             strong {
             color: {color:bold and italics};
             }
-            
+
             h1{
                 text-align:center;
                 text-transform:uppercase;
                 font-weight:700;
                 margin:4px 10px;
             }
-            
+
             h2{
                 text-transform:uppercase;
                 font-size:.9rem;
@@ -244,57 +247,57 @@
             overflow-y: scroll;
             overflow-x:hidden;
             }
-            
+
             /* basically the footer but smaller */
-            
+
             #sidebar h1{
                 color: #fff;
                 text-transform:uppercase;
                 font-size:.7rem;
-                background:linear-gradient(to top right, {color:accent},#4CAF50);
-                border-radius:4px;
-                margin:4px -5px;
-                padding:5px;
-                letter-spacing:1px;
-                box-shadow:0 2px 2px rgba(0,0,0,0);
+            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+            border-radius:4px;
+            margin:4px -5px;
+            padding:5px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
             }
-            
+
             #sidebar h2{
-                color: {color:accent};
-                text-transform:uppercase;
-                font-size:.7rem;
-                margin:10px 4px;
-                letter-spacing:1px;
-                box-shadow:0 2px 2px rgba(0,0,0,0);
+            color: {color:accent};
+            text-transform:uppercase;
+            font-size:.7rem;
+            margin:10px 4px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
             }
-            
+
             #sidebar h3{
-                color: {color:text};
-                text-transform:uppercase;
-                font-size:.7rem;
-                margin:10px 4px;
-                letter-spacing:1px;
-                box-shadow:0 2px 2px rgba(0,0,0,0);
+            color: {color:text};
+            text-transform:uppercase;
+            font-size:.7rem;
+            margin:10px 4px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
             }
 
             /* CONTENT STUFF */
 
             #content {
                 position: absolute;
-                top: {text:content top};
-                left: {text:content left};
-                width: {text:content width};
-                height: {text:content height};
-                overflow-y: scroll;
-                overflow-x: visible !important;
-                padding: 15px;
-                {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
-                {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
+            top: {text:content top};
+            left: {text:content left};
+            width: {text:content width};
+            height: {text:content height};
+            overflow-y: scroll;
+            overflow-x: visible !important;
+            padding: 15px;
+            {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
+            {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
             text-align:left;
             }
 
             /* SCROLLBAR */
-            
+
             ::-webkit-scrollbar {
                 width: 0;
                 height: 0;
@@ -309,27 +312,27 @@
             }
 
             ::-webkit-scrollbar-thumb {
-                background: {color:accent};
-                background-clip:padding-box;
-                border:2px solid rgba(0, 0, 0, 0);
+            background: {color:accent};
+            background-clip:padding-box;
+            border:2px solid rgba(0, 0, 0, 0);
             }
 
             /* QUOTE --
                 I DON'T KNOW IF THE WRAPPER IS ENTIRELY 
                 NECESSARY BUT I'M USING IT ANYWAY */
-                
+
             .quote-wrapper .fas{
-                color:{color:accent};
-                font-size:1.8rem;
-                text-shadow:rgba(0,2px,2px,.4);
+            color:{color:accent};
+            font-size:1.8rem;
+            text-shadow:rgba(0,2px,2px,.4);
             }
-            
+
             .quote{
                 text-align:left;
                 margin:-34px 0 -20px 28px;
                 top:0;
             }
-            
+
             .quote h1{
                 text-transform:none;
                 text-align:left;
@@ -361,13 +364,14 @@
             }
 
 
-            /* FOOTER */
+            /* FOOTER 
+            idk if the wrapper is necessary but oh well */
 
             .footer-wrapper {
                 text-align:center;
                 margin:6px -6px 50px -6px;
             }
-            
+
             /* jank ass margin fix for last post */
             .footer-wrapper:last-of-type{
                 margin-bottom:0;
@@ -375,13 +379,13 @@
 
             .footer{
                 color: #fff;
-                background:linear-gradient(to top right, {color:accent},#4CAF50);
-                border-radius:10px;
-                padding:10px 0 10px 20px;
-                margin-bottom:6px;
-                box-shadow:0 2px 2px rgba(0,0,0,.2);
-                font-size:1rem;
-                letter-spacing:20px;
+            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+            border-radius:10px;
+            padding:10px 0 10px 20px;
+            margin-bottom:6px;
+            box-shadow:0 2px 2px rgba(0,0,0,.2);
+            font-size:1rem;
+            letter-spacing:20px;
             }
 
             .footer a{
@@ -392,8 +396,8 @@
             .footer a:hover{
             color:{color:text};
             }
-            
-            
+
+
             #pagination{
                 font-size:1.2rem;
             }
@@ -408,9 +412,9 @@
 
 <!-- SIDEBAR -->
 <div id="sidebar"><h2>{title}</h2>
-{description}
+    {description}
 
-{block:Pagination}
+    {block:Pagination}
     <div id="pagination"><br/>
         {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-angle-left"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;{/block:PreviousPage}
         {block:NextPage}<a href="{NextPage}"><i class="fas fa-angle-right"></i></a>{/block:NextPage}
@@ -446,13 +450,13 @@
             <!-- QUOTE POST -->
             {block:Quote}<div class="quote-wrapper"><i class="fas fa-quote-left"></i><div class="quote"><h1>{Quote}</h1>{block:Source}– {Source}{/block:Source}</p></div></div>{/block:Quote}
             <!-- / QUOTE POST -->
-            
+
             <!-- CHAT POST -->
             {block:Chat}{block:Title}<h1>{Title}</h1>{/block:Title}
 
             <div class="txt"><div style="padding:10px 0px 10px 0px">{block:Lines}<li style="list-style-type:none;">{block:Label}<b>{Label}</b>{/block:Label} {Line}</li>{/block:Lines}</ul></div></div>{/block:Chat}
             <!-- / CHAT POST -->
-            
+
             <!-- VIDEO POST -->
             {block:Video}<div class="video"><center>{Video-500}</center></div>
             {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Video}
@@ -509,12 +513,12 @@
                 {/block:RebloggedFrom}
 
             </div> <!-- MESSY ASS PERMALINK FOOTER -->
-        
+
             <!-- TAGS -->
             <div class="tags">
-            {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
+                {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
             </div><!-- TAGS -->
-            
+
         </div><!-- FOOTER -->
 
 
@@ -522,8 +526,8 @@
         {/block:Date}
 
         {/block:Posts}{block:PostNotes}<div class="permalink">{PostNotes}</div>{/block:PostNotes}
-        
-        
+
+
     </section>
 
 
