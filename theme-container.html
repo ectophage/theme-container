@@ -260,7 +260,7 @@
                 font-size:.7rem;
                 background:linear-gradient(to top right, {color:accent},#4CAF50);
                  border-radius:4px;
-                 margin:4px -6px;
+                 margin:4px -5px;
                  padding:5px;
                  letter-spacing:1px;
                  box-shadow:0 2px 2px rgba(0,0,0,0);
@@ -303,8 +303,8 @@
             /* SCROLLBAR */
             
             ::-webkit-scrollbar {
-                width: 7px;
-                height: 7px;
+                width: 0;
+                height: 0;
             }
 
             ::-webkit-scrollbar-track {
@@ -372,8 +372,7 @@
 
             .footer-wrapper {
                 text-align:center;
-                display: block;
-                margin:6px 0 50px 0;
+                margin:6px -6px 50px -6px;
             }
             
             /* jank ass margin fix for last post */
@@ -383,30 +382,22 @@
 
             .footer{
                 color: #fff;
-            background:linear-gradient(to top right, {color:accent},#4CAF50);
-            border-radius:10px;
-            padding:10px;
-            margin-bottom:6px;
-            box-shadow:0 2px 2px rgba(0,0,0,.2);
-            font-size:1rem;
+                background:linear-gradient(to top right, {color:accent},#4CAF50);
+                border-radius:10px;
+                padding:10px 0 10px 20px;
+                margin-bottom:6px;
+                box-shadow:0 2px 2px rgba(0,0,0,.2);
+                font-size:1rem;
+                letter-spacing:20px;
             }
 
             .footer a{
                 color:#fff;
                 text-shadow:0 2px 2px rgba(0,0,0,.4);
-                text-transform:uppercase;
             }
 
             .footer a:hover{
             color:{color:text};
-            }
-
-            .tags a {
-            color: {color:link};
-            }
-
-            .tags a:hover {
-            color: {color:link hover};
             }
 
 
@@ -502,18 +493,18 @@
         <div class="footer-wrapper">
             <div class="footer">
                 <!-- PERMALINK -->
-                <a href="{Permalink}"><i class="fas fa-link"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{Permalink}"><i class="fas fa-link"></i></a>
 
                 <!-- NOTES -->
-                <a href="{Permalink}"><i class="fas fa-sticky-note"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{Permalink}"><i class="fas fa-sticky-note"></i></a> 
 
                 <!-- DATE -->
-                <a href="{Permalink}" class="date"><i class="fas fa-calendar"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{Permalink}" class="date"><i class="fas fa-calendar"></i></a>
 
                 <!-- REBLOGGED FROM SECTION --->
                 {block:RebloggedFrom}
                 <!-- REBLOGGED FROM -->
-                <a href="{ReblogParentURL}"><i class="fas fa-retweet"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{ReblogParentURL}"><i class="fas fa-retweet"></i></a>
                 <!-- SOURCE -->
                 <a href="{ReblogRootURL}"><i class="fas fa-code"></i></a>
                 {/block:RebloggedFrom}
