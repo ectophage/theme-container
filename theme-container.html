@@ -235,7 +235,7 @@
             top: {text:sidebar top};
             left: {text:sidebar left};
             width: {text:sidebar width};
-            height: {text:sidebar height};
+            max-height: {text:sidebar height};
             {block:IfSidebarBackground}background:{color:sidebar background};{/block:IfSidebarBackground}
             position:absolute;
             {block:IfSidebarBorder}border: 4px solid {color:sidebar border};{/block:IfSidebarBorder}
@@ -245,13 +245,6 @@
             overflow-x:hidden;
             }
             
-            /* hide the scrollbar in the sidebar (bc it's ugly) */
-
-            #sidebar::-webkit-scrollbar {
-                width: 0 !important;
-                height: 0 !important;
-            }
-            
             /* basically the footer but smaller */
             
             #sidebar h1{
@@ -259,11 +252,11 @@
                 text-transform:uppercase;
                 font-size:.7rem;
                 background:linear-gradient(to top right, {color:accent},#4CAF50);
-                 border-radius:4px;
-                 margin:4px -5px;
-                 padding:5px;
-                 letter-spacing:1px;
-                 box-shadow:0 2px 2px rgba(0,0,0,0);
+                border-radius:4px;
+                margin:4px -5px;
+                padding:5px;
+                letter-spacing:1px;
+                box-shadow:0 2px 2px rgba(0,0,0,0);
             }
             
             #sidebar h2{
@@ -399,7 +392,11 @@
             .footer a:hover{
             color:{color:text};
             }
-
+            
+            
+            #pagination{
+                font-size:1.2rem;
+            }
 
 
         </style>
@@ -413,10 +410,12 @@
 <div id="sidebar"><h1>sidebar header</h1>
 {description}
 
-<h2>sidebar second header</h2>    pictures, abstract symbols, materials, and colors are among the ingredients with which a designer or engineer works. 
-    
-    <h3>sidebar third (boring) header</h3>
-    to design is to discover relationships and to make arrangements and rearrangements among these ingredients.
+{block:Pagination}
+    <div id="pagination"><br/>
+        {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-angle-left"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;{/block:PreviousPage}
+        {block:NextPage}<a href="{NextPage}"><i class="fas fa-angle-right"></i></a>{/block:NextPage}
+    </div><!-- PAGINATION -->
+    {/block:Pagination}
 </div>
 <!-- / SIDEBAR -->
 
@@ -523,7 +522,10 @@
         {/block:Date}
 
         {/block:Posts}{block:PostNotes}<div class="permalink">{PostNotes}</div>{/block:PostNotes}
+        
+        
     </section>
+
 
 
 </div><!-- CONTENT -->
