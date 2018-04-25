@@ -1,88 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <!--   FUN HEADER STUFF; DON'T TOUCH THIS -->
-
-    <meta charset="utf-8">
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
-
-    <link rel="stylesheet" href="application.css" media="screen">
-
-    <!-- BACKGROUND THINGS -->
-    <meta name="image:background" content=""/>
-    <meta name="color:body background" content="#FAFAFA"/>
-
-    <!-- LITTLE THINGS -->
-    <meta name="color:accent" content="#009688"/>
-    <meta name="text:font awesome tag decoration" content="fas fa-hashtag"/>
-
-    <!-- CONTENT POSITION; DIMENSIONS -->
-    <meta name="text:content top" content="100px"/>
-    <meta name="text:content left" content="100px"/>
-    <meta name="text:content width" content="400px"/>
-    <meta name="text:content height" content="400px"/>
-
-    <!-- CONTENT FORMATTING -->
-    <meta name="text:font size" content=".8rem"/>
-    <meta name="color:content background" content="#ffffff"/>
-    <meta name="color:content border" content="#009688"/>
-    <meta name="color:text" content="#000"/>
-    <meta name="color:link" content="#4CAF50"/>
-    <meta name="color:link hover" content="#009688"/>
-    <meta name="color:bold and italics" content="#000"/>
-
-    <!-- CONTENT BOOLEANS -->
-    <meta name="if:content background" content="0"/>
-    <meta name="if:sidebar background" content="0"/>
-    <meta name="if:content border" content="0"/>
-    <meta name="if:sidebar border" content="0"/>
-
-    <!-- SIDEBAR POSITION; DIMENSIONS -->
-    <meta name="text:sidebar top" content="200px"/>
-    <meta name="text:sidebar left" content="520px"/>
-    <meta name="text:sidebar width" content="300px"/>
-    <meta name="text:sidebar height" content="200px"/>
-
-    <!-- SIDEBAR FORMATTING -->
-    <meta name="color:sidebar background" content="#f6f6f6"/>
-    <meta name="color:sidebar border" content="#009688"/>
-
-    <!-- FOOTER STUFF -->
-    <meta name="color:footer gradient left" content="#009688"/>
-    <meta name="color:footer gradient right" content="#4CAF50"/>
-
-
-    <!-- THIS MAKES PHOTOSETS WORK, DON'T FUCK WITH IT
-         SOURCE: http://gukthemes.com/post/149193631486/tutorial-540pxresponsive-photosets -->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <link href="//static.tumblr.com/qudkd6d/OcDnl99gb/style.css" rel="stylesheet" type="text/css"/>
-    <script src="//static.tumblr.com/qudkd6d/Az6nkemqr/pxuphotoset.min.js"></script>
-    <link href="//static.tumblr.com/wupwnyt/qWVoc4phj/resizing.css" rel="stylesheet" type="text/css"/>
-
-    <script>
-        // PXU Photoset Script by Pixel Union
-        $(document).ready(function(){
-            $('.photo-slideshow').pxuPhotoset({
-                lightbox:true,
-                rounded:false,
-                gutter:'0px',
-                borderRadius:'0px',
-                photoset:'.photo-slideshow',
-                photoWrap:'.photo-data',
-                photo:'.pxu-photo'
-            });
-        });
-    </script> <!-- / PHOTOSETS STUFF -->
-
-    <!-- FONT AWESOME IMPORT
-         FIND PRETTY ICONS FOR YOUR TAGS HERE https://fontawesome.com/icons?d=gallery -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
-    <!-- PLUG SCRIPTS IN HERE IF YOU NEED THEM -->
-
-    <title>{title}</title><!DOCTYPE html>
     <html lang="en">
     <head>
 
@@ -118,8 +34,10 @@
         <!-- BACKGROUND/SIDEBAR BOOLEANS -->
         <meta name="if:content background" content="0"/>
         <meta name="if:content border" content="0"/>
+        <meta name="if:content shadow" content="0"/>
         <meta name="if:sidebar background" content="0"/>
         <meta name="if:sidebar border" content="0"/>
+        <meta name="if:sidebar shadow" content="0"/>
 
         <!-- SIDEBAR POSITION; DIMENSIONS -->
         <meta name="text:sidebar top" content="200px"/>
@@ -209,14 +127,14 @@
             strong {
             color: {color:bold and italics};
             }
-
+            
             h1{
                 text-align:center;
                 text-transform:uppercase;
                 font-weight:700;
                 margin:4px 10px;
             }
-
+            
             h2{
                 text-transform:uppercase;
                 font-size:.9rem;
@@ -246,58 +164,58 @@
             text-align:center;
             overflow-y: scroll;
             overflow-x:hidden;
+            {block:IfSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:IfSidebarShadow}
             }
-
+            
             /* basically the footer but smaller */
-
+            
             #sidebar h1{
                 color: #fff;
                 text-transform:uppercase;
                 font-size:.7rem;
-            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
-            border-radius:4px;
-            margin:4px -5px;
-            padding:5px;
-            letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
+                background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+                border-radius:4px;
+                margin:4px -5px;
+                padding:5px;
+                letter-spacing:1px;
+                box-shadow:0 2px 2px rgba(0,0,0,.2);
             }
-
+            
             #sidebar h2{
-            color: {color:accent};
-            text-transform:uppercase;
-            font-size:.7rem;
-            margin:10px 4px;
-            letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
+                color: {color:accent};
+                text-transform:uppercase;
+                font-size:.7rem;
+                margin:10px 4px;
+                letter-spacing:1px;
             }
-
+            
             #sidebar h3{
-            color: {color:text};
-            text-transform:uppercase;
-            font-size:.7rem;
-            margin:10px 4px;
-            letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
+                color: {color:text};
+                text-transform:uppercase;
+                font-size:.7rem;
+                margin:10px 4px;
+                letter-spacing:1px;
             }
 
             /* CONTENT STUFF */
 
             #content {
                 position: absolute;
-            top: {text:content top};
-            left: {text:content left};
-            width: {text:content width};
-            height: {text:content height};
-            overflow-y: scroll;
-            overflow-x: visible !important;
-            padding: 15px;
-            {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
-            {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
-            text-align:left;
+                top: {text:content top};
+                left: {text:content left};
+                width: {text:content width};
+                height: {text:content height};
+                overflow-y: scroll;
+                overflow-x: visible !important;
+                padding: 15px;
+                {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
+                {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
+                text-align:left;
+                {block:IfContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:IfContentShadow}
             }
 
             /* SCROLLBAR */
-
+            
             ::-webkit-scrollbar {
                 width: 0;
                 height: 0;
@@ -312,27 +230,27 @@
             }
 
             ::-webkit-scrollbar-thumb {
-            background: {color:accent};
-            background-clip:padding-box;
-            border:2px solid rgba(0, 0, 0, 0);
+                background: {color:accent};
+                background-clip:padding-box;
+                border:2px solid rgba(0, 0, 0, 0);
             }
 
             /* QUOTE --
                 I DON'T KNOW IF THE WRAPPER IS ENTIRELY 
                 NECESSARY BUT I'M USING IT ANYWAY */
-
+                
             .quote-wrapper .fas{
-            color:{color:accent};
-            font-size:1.8rem;
-            text-shadow:rgba(0,2px,2px,.4);
+                color:{color:accent};
+                font-size:1.8rem;
+                text-shadow:rgba(0,2px,2px,.4);
             }
-
+            
             .quote{
                 text-align:left;
                 margin:-34px 0 -20px 28px;
                 top:0;
             }
-
+            
             .quote h1{
                 text-transform:none;
                 text-align:left;
@@ -371,7 +289,7 @@
                 text-align:center;
                 margin:6px -6px 50px -6px;
             }
-
+            
             /* jank ass margin fix for last post */
             .footer-wrapper:last-of-type{
                 margin-bottom:0;
@@ -379,13 +297,13 @@
 
             .footer{
                 color: #fff;
-            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
-            border-radius:10px;
-            padding:10px 0 10px 20px;
-            margin-bottom:6px;
-            box-shadow:0 2px 2px rgba(0,0,0,.2);
-            font-size:1rem;
-            letter-spacing:20px;
+                background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+                border-radius:10px;
+                padding:10px 0 10px 20px;
+                margin-bottom:6px;
+                box-shadow:0 2px 2px rgba(0,0,0,.2);
+                font-size:1rem;
+                letter-spacing:20px;
             }
 
             .footer a{
@@ -396,8 +314,8 @@
             .footer a:hover{
             color:{color:text};
             }
-
-
+            
+            
             #pagination{
                 font-size:1.2rem;
             }
@@ -412,9 +330,9 @@
 
 <!-- SIDEBAR -->
 <div id="sidebar"><h2>{title}</h2>
-    {description}
+{description}
 
-    {block:Pagination}
+{block:Pagination}
     <div id="pagination"><br/>
         {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-angle-left"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;{/block:PreviousPage}
         {block:NextPage}<a href="{NextPage}"><i class="fas fa-angle-right"></i></a>{/block:NextPage}
@@ -450,13 +368,13 @@
             <!-- QUOTE POST -->
             {block:Quote}<div class="quote-wrapper"><i class="fas fa-quote-left"></i><div class="quote"><h1>{Quote}</h1>{block:Source}– {Source}{/block:Source}</p></div></div>{/block:Quote}
             <!-- / QUOTE POST -->
-
+            
             <!-- CHAT POST -->
             {block:Chat}{block:Title}<h1>{Title}</h1>{/block:Title}
 
             <div class="txt"><div style="padding:10px 0px 10px 0px">{block:Lines}<li style="list-style-type:none;">{block:Label}<b>{Label}</b>{/block:Label} {Line}</li>{/block:Lines}</ul></div></div>{/block:Chat}
             <!-- / CHAT POST -->
-
+            
             <!-- VIDEO POST -->
             {block:Video}<div class="video"><center>{Video-500}</center></div>
             {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Video}
@@ -513,12 +431,12 @@
                 {/block:RebloggedFrom}
 
             </div> <!-- MESSY ASS PERMALINK FOOTER -->
-
+        
             <!-- TAGS -->
             <div class="tags">
-                {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
+            {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
             </div><!-- TAGS -->
-
+            
         </div><!-- FOOTER -->
 
 
@@ -526,8 +444,8 @@
         {/block:Date}
 
         {/block:Posts}{block:PostNotes}<div class="permalink">{PostNotes}</div>{/block:PostNotes}
-
-
+        
+        
     </section>
 
 
