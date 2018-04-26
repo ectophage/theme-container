@@ -117,6 +117,11 @@
             font-size:{text:font size};
         }
 
+        ::selection{
+            background:{color:accent};
+            color:#fff;
+        }
+
         p {
             padding: 5px 0;
         }
@@ -320,18 +325,20 @@
     /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
         .photoset {
-            width: 100%;
+            max-width:100%;
+            max-height:100%;
             margin: auto;
         }
 
         .pix img {
-            width: 100%;
+            max-width:100%;
+            max-height:100%;
         }
 
         .tmblr-full img {
-            width:100%;
+            max-width:100%;
+            max-height:100%;
             display: inline-block;
-            height: auto;
         }
 
     /* ------------------ QUOTE ------------------ */
@@ -373,9 +380,16 @@
 
     /* ------------------ "VIDEO" ------------------ */
 
+        .video{
+            text-align:center;
+        }
+
         /* actually just all iframes but shhhhhh */
         iframe{
-            width:100%;
+            display: inline-block;
+            margin:auto;
+            max-width:100%;
+            max-height:100%;
         }
 
 
@@ -458,18 +472,18 @@
             <!-- POST: CHAT  -->
             {block:Chat}
             {block:Title}<h1>{Title}</h1>{/block:Title}
-                <div class="chat">
-                    {block:Lines}<li>
-                    {block:Label}<b>{Label}</b>{/block:Label}
-                    {Line}</li>{/block:Lines}
-                </div>
+            <div class="chat">
+                {block:Lines}<li>
+                {block:Label}<b>{Label}</b>{/block:Label}
+                {Line}</li>{/block:Lines}
+            </div>
             {/block:Chat}
             <!-- / POST: CHAT -->
 
 
             <!-- POST: VIDEO -->
             {block:Video}
-            {Video-500}
+            <div class="video">{Video-500}</div>
             {block:Caption}{Caption}{/block:Caption}
             {/block:Video}
             <!-- / POST: VIDEO -->
@@ -540,4 +554,3 @@
 
 
 </div><!-- CONTENT -->
-    
