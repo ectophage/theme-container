@@ -88,17 +88,23 @@
 
     <style>
 
-        /* FIX ANNOYING PADDING ISSUES; MAKE EVERYTHING TRANSITION SMOOTHLY */
+        /* ------------------ DUMB TWEAKS ------------------ */
 
         * {
             box-sizing: border-box;
             transition: .2s;
         }
 
-        /* BASIC TEXT FORMATTING */
+        small,
+        sub,
+        sup {
+            font-size: 1em;
+        }
+
+        /* ------------------ BASIC FORMATTING ------------------ */
 
         body {
-        background-image: url({image:background});
+            background-image: url({image:background});
         background-color:{color:body background};
         font-family: Helvetica, sans serif;
         font-size:{text:font size};
@@ -110,7 +116,7 @@
 
         a {
             text-decoration: none;
-            color: {color:link};
+        color: {color:link};
         }
 
         a:hover {
@@ -146,17 +152,24 @@
             font-size:.9rem;
         }
 
-        /* MAKE ABSOLUTELY EVERYTHING THE SAME SIZE */
+        /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
-        small {
-            font-size: 1em;
+        .photoset {
+            width: 100%;
+            margin: auto;
         }
 
-        sub {
-            font-size: 1em;
+        .pix img {
+            width: 100%;
         }
 
-        /* SIDEBAR STUFF */
+        .tmblr-full img {
+            width:100%;
+            display: inline-block;
+            height: auto;
+        }
+
+        /* ------------------ SIDEBAR ------------------ */
 
         #sidebar {
         top: {text:sidebar top};
@@ -175,7 +188,6 @@
         }
 
         /* basically the footer but smaller */
-
         #sidebar h1{
             color: #fff;
             text-transform:uppercase;
@@ -206,7 +218,7 @@
         box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
-        /* CONTENT STUFF */
+        /* ------------------ CONTENT ------------------ */
 
         #content {
             position: absolute;
@@ -223,17 +235,14 @@
         {block:ifContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifContentShadow}
         }
 
-        /* SCROLLBAR */
+        /* ------------------ SCROLLBAR ------------------ */
 
         ::-webkit-scrollbar {
             width: 0;
             height: 0;
         }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
+        ::-webkit-scrollbar-track,
         ::-webkit-scrollbar-corner {
             background: transparent;
         }
@@ -244,10 +253,9 @@
         border:2px solid rgba(0, 0, 0, 0);
         }
 
-        /* QUOTE --
-            I DON'T KNOW IF THE WRAPPER IS ENTIRELY
-            NECESSARY BUT I'M USING IT ANYWAY */
+        /* ------------------ QUOTE ------------------ */
 
+        /* I don't know if the wrapper is entirely necessary but I'm using it anyway */
         .quote-wrapper .fas{
         color:{color:accent};
         font-size:1.8rem;
@@ -265,34 +273,7 @@
             text-align:left;
         }
 
-        /* PHOTOS & PHOTOSETS */
-
-        .photoset {
-            padding: 5px;
-            width: 100%;
-            margin: auto;
-            margin-bottom:-10px;
-        }
-
-        .pix img {
-            width: 100%;
-            display: block;
-        }
-
-        .tmblr-full img {
-            width: 100%;
-            display: inline-block;
-            height: auto;
-            margin: 10px;
-        }
-
-        .txt img {
-            margin: 8px 0;
-        }
-
-
-        /* FOOTER
-        idk if the wrapper is necessary but oh well */
+        /* ------------------ FOOTER ------------------ */
 
         .footer-wrapper {
             color:#fff;
@@ -321,10 +302,12 @@
             text-shadow:0 2px 2px rgba(0,0,0,.4);
         }
 
+        /* ------------------ PAGINATION ------------------ */
+
         #pagination .fas{
-            color:{color:link};
-            font-size:1.2rem;
-            text-shadow:0 2px 2px rgba(0,0,0,.2);
+        color:{color:link};
+        font-size:1.2rem;
+        text-shadow:0 2px 2px rgba(0,0,0,.2);
         }
 
 
@@ -365,37 +348,67 @@
             {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Photo}
 
 
-            <!-- PHOTOSET -->
+            <!-- POST: PHOTOSET -->
             {block:Photoset}
-            <div class="set"><center><div class="pxu"><div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">{block:Photos}
-                <div class="photo-data"><div class="pxu-photo"><img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}"></div><a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a></div>{/block:Photos}</div></div></center></div>
+            <div class="set">
+                <div class="pxu">
+                    <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+                        {block:Photos}
+                            <div class="photo-data">
+                                <div class="pxu-photo">
+                                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
+                                </div>
+                                <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                            </div>
+                        {/block:Photos}
+                    </div>
+                </div>
+            </div>
             {/block:Photoset}
-            <!-- / PHOTOSET -->
+            <!-- / POST: PHOTOSET -->
 
-            <!-- QUOTE POST -->
-            {block:Quote}<div class="quote-wrapper"><i class="fas fa-quote-left"></i><div class="quote"><h1>{Quote}</h1>{block:Source}– {Source}{/block:Source}</p></div></div>{/block:Quote}
-            <!-- / QUOTE POST -->
+            <!-- POST: QUOTE -->
+            {block:Quote}
+            <div class="quote-wrapper">
+                <i class="fas fa-quote-left"></i>
+                <div class="quote">
+                    <h1>{Quote}</h1>{block:Source}– {Source}{/block:Source}
+                </div>
+            </div>
+            {/block:Quote}
+            <!-- / POST: QUOTE -->
 
-            <!-- CHAT POST -->
-            {block:Chat}{block:Title}<h1>{Title}</h1>{/block:Title}
+            <!-- POST: CHAT  -->
+            {block:Chat}
+            {block:Title}<h1>{Title}</h1>{/block:Title}
+            <div class="txt">
+                <div style="padding:10px 0px 10px 0px">
+                    {block:Lines}<li style="list-style-type:none;">
+                    {block:Label}<b>{Label}</b>{/block:Label}
+                    {Line}</li>{/block:Lines}
+                </div>
+            </div>
+            {/block:Chat}
+            <!-- / POST: CHAT -->
 
-            <div class="txt"><div style="padding:10px 0px 10px 0px">{block:Lines}<li style="list-style-type:none;">{block:Label}<b>{Label}</b>{/block:Label} {Line}</li>{/block:Lines}</ul></div></div>{/block:Chat}
-            <!-- / CHAT POST -->
+            <!-- POST: VIDEO -->
+            {block:Video}
+                <div class="video">{Video-500}</div>
+                {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}
+            {/block:Video}
+            <!-- / POST: VIDEO -->
 
-            <!-- VIDEO POST -->
-            {block:Video}<div class="video"><center>{Video-500}</center></div>
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Video}
-            <!-- / VIDEO POST -->
-
-            <!-- AUDIO -->
+            <!-- POST: AUDIO -->
             {block:Audio}<div class="audio">
             <div class="button"></div>
             {block:AudioPlayer}{block:ifblackaudioplayer}{AudioPlayerBlack}{/block:ifblackaudioplayer}{block:ifnotblackaudioplayer}{AudioPlayerWhite}{/block:ifnotblackaudioplayer}{/block:AudioPlayer}
-            <div class="music"><center><b style="font-size:1.2em; text-transform:uppercase; line-height:1em;">{block:TrackName}{TrackName}{/block:TrackName}</b>{block:Artist} {Artist}{/block:Artist}{block:Album},
+            <div class="music">{block:TrackName}{TrackName}{/block:TrackName}{block:Artist} {Artist}{/block:Artist}{block:Album},
                 {Album}
-                {/block:Album}</center></div>
+                {/block:Album}
+            </div><!-- / AUDIO -->
 
             {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}</div>{/block:Audio}
+            <!-- POST: AUDIO -->
 
             {block:ContentSource}
             <!-- {SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}"
@@ -404,14 +417,12 @@
             {block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
             {/block:ContentSource}
 
-            <!-- {block:NoRebloggedFrom}
-            {block:RebloggedFrom}{ReblogParentName}{/block:RebloggedFrom}
-            {/block:NoRebloggedFrom} -->
 
-            <!-- ASK -->
-            {block:Answer}<table><tbody><tr><td><img src="{AskerPortraitURL-40}"></img></td><td><b style="text-transform:uppercase;">{Asker} asked:</b> {Question}</td></tr></tbody></table>
+            <!-- POST: ASK -->
+            {block:Answer}<table><tbody><tr><td><img src="{AskerPortraitURL-40}"/></td><td><b style="text-transform:uppercase;">{Asker} asked:</b> {Question}</td></tr></tbody></table>
             <div class="answer">{Answer}</div>
-            {/block:Answer}</div>
+            {/block:Answer}
+        </div><!-- / POST: ASK -->
 
 
         <!-- FOOTER -->
@@ -437,17 +448,15 @@
                 <a href="{ReblogRootURL}" title="posted by {ReblogRootName}"><i class="fas fa-code"></i></a>
                 {/block:RebloggedFrom}
 
-            </div> <!-- MESSY ASS PERMALINK FOOTER -->
+            </div> <!-- / FOOTER -->
 
             <!-- TAGS -->
             <div class="tags">
                 {block:HasTags}{block:Tags}<i class="{text:font awesome tag decoration}"></i> <a href="{TagURL}">{Tag}</a> &nbsp;&nbsp;{/block:Tags}{/block:HasTags}
-            </div><!-- TAGS -->
+            </div><!-- / TAGS -->
 
-        </div><!-- FOOTER -->
+        </div><!-- / FOOTER WRAPPER -->
 
-
-        <style type="text/css">.content .entry {border-radius:0;}</style>
         {/block:Date}
 
         {/block:Posts}{block:PostNotes}<div class="permalink">{PostNotes}</div>{/block:PostNotes}
