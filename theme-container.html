@@ -88,20 +88,22 @@
 
     <style>
 
-        /* ------------------ DUMB TWEAKS ------------------ */
+/* ----------------------------------- DUMB TWEAKS ----------------------------------- */
 
+        /* fix padding & margin issues; make smooth transitions */
         * {
             box-sizing: border-box;
             transition: .2s;
         }
 
+        /* make all text the same size (bc double plus small text is gross) */
         small,
         sub,
         sup {
             font-size: 1em;
         }
 
-        /* ------------------ BASIC FORMATTING ------------------ */
+/* ----------------------------------- BASIC FORMATTING ----------------------------------- */
 
         body {
             background-image: url({image:background});
@@ -152,22 +154,8 @@
             font-size:.9rem;
         }
 
-        /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
-        .photoset {
-            width: 100%;
-            margin: auto;
-        }
-
-        .pix img {
-            width: 100%;
-        }
-
-        .tmblr-full img {
-            width:100%;
-            display: inline-block;
-            height: auto;
-        }
+/* ----------------------------------- CONTAINER SETUP ----------------------------------- */
 
         /* ------------------ SIDEBAR ------------------ */
 
@@ -220,6 +208,7 @@
 
         /* ------------------ CONTENT ------------------ */
 
+        /* this looks so gross lmao I'm sorry */
         #content {
             position: absolute;
         top: {text:content top};
@@ -253,13 +242,78 @@
         border:2px solid rgba(0, 0, 0, 0);
         }
 
+/* ------------------ FOOTER ------------------ */
+
+    .footer-wrapper {
+        color:#fff;
+        text-align:center;
+        margin:6px -6px 50px -6px;
+    }
+
+    /* jank ass margin fix for last post */
+    .footer-wrapper:last-of-type{
+        margin-bottom:0;
+    }
+
+    .footer{
+        color: #fff;
+        background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+        border-radius:10px;
+        padding:10px 0 10px 20px;
+        margin-bottom:6px;
+        box-shadow:0 2px 2px rgba(0,0,0,.2);
+        font-size:1rem;
+        letter-spacing:20px;
+    }
+
+    .footer .fas{
+        color:#fff !important;
+        text-shadow:0 2px 2px rgba(0,0,0,.4);
+    }
+
+    /* ------------------ POST NOTES ------------------ */
+
+    .post-notes ul,
+    .post-notes ol,
+    .post-notes li {
+        list-style-type: square;
+        margin-left:-10px;
+    }
+
+    /* ------------------ PAGINATION ------------------ */
+
+    #pagination .fas{
+        color:{color:link};
+        font-size:1.2rem;
+        text-shadow:0 2px 2px rgba(0,0,0,.2);
+    }
+
+/* ----------------------------------- POST STYLING ----------------------------------- */
+
+        /* ------------------ PHOTOS & PHOTOSETS ------------------ */
+
+        .photoset {
+            width: 100%;
+            margin: auto;
+        }
+
+        .pix img {
+            width: 100%;
+        }
+
+        .tmblr-full img {
+            width:100%;
+            display: inline-block;
+            height: auto;
+        }
+
         /* ------------------ QUOTE ------------------ */
 
         /* I don't know if the wrapper is entirely necessary but I'm using it anyway */
         .quote-wrapper .fas{
-        color:{color:accent};
-        font-size:1.8rem;
-        text-shadow:rgba(0,2px,2px,.4);
+            color:{color:accent};
+            font-size:1.8rem;
+            text-shadow:rgba(0,2px,2px,.4);
         }
 
         .quote{
@@ -273,43 +327,12 @@
             text-align:left;
         }
 
-        /* ------------------ FOOTER ------------------ */
+        /* ------------------ CHAT ------------------ */
 
-        .footer-wrapper {
-            color:#fff;
-            text-align:center;
-            margin:6px -6px 50px -6px;
+        .chat {
+            padding:10px 0px 10px 0px;
         }
-
-        /* jank ass margin fix for last post */
-        .footer-wrapper:last-of-type{
-            margin-bottom:0;
-        }
-
-        .footer{
-            color: #fff;
-        background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
-        border-radius:10px;
-        padding:10px 0 10px 20px;
-        margin-bottom:6px;
-        box-shadow:0 2px 2px rgba(0,0,0,.2);
-        font-size:1rem;
-        letter-spacing:20px;
-        }
-
-        .footer .fas{
-            color:#fff !important;
-            text-shadow:0 2px 2px rgba(0,0,0,.4);
-        }
-
-        /* ------------------ PAGINATION ------------------ */
-
-        #pagination .fas{
-        color:{color:link};
-        font-size:1.2rem;
-        text-shadow:0 2px 2px rgba(0,0,0,.2);
-        }
-
+        
 
     </style>
 
@@ -354,12 +377,12 @@
                 <div class="pxu">
                     <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
                         {block:Photos}
-                            <div class="photo-data">
-                                <div class="pxu-photo">
-                                    <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
-                                </div>
-                                <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                        <div class="photo-data">
+                            <div class="pxu-photo">
+                                <img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}">
                             </div>
+                            <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}"></a>
+                        </div>
                         {/block:Photos}
                     </div>
                 </div>
@@ -381,52 +404,39 @@
             <!-- POST: CHAT  -->
             {block:Chat}
             {block:Title}<h1>{Title}</h1>{/block:Title}
-            <div class="txt">
-                <div style="padding:10px 0px 10px 0px">
+                <div class="chat">
                     {block:Lines}<li style="list-style-type:none;">
                     {block:Label}<b>{Label}</b>{/block:Label}
                     {Line}</li>{/block:Lines}
                 </div>
-            </div>
             {/block:Chat}
             <!-- / POST: CHAT -->
 
             <!-- POST: VIDEO -->
             {block:Video}
-                <div class="video">{Video-500}</div>
-                {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}
+            <div class="video">{Video-500}</div>
+            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}
             {/block:Video}
             <!-- / POST: VIDEO -->
 
             <!-- POST: AUDIO -->
-            {block:Audio}<div class="audio">
-            <div class="button"></div>
-            {block:AudioPlayer}{block:ifblackaudioplayer}{AudioPlayerBlack}{/block:ifblackaudioplayer}{block:ifnotblackaudioplayer}{AudioPlayerWhite}{/block:ifnotblackaudioplayer}{/block:AudioPlayer}
-            <div class="music">{block:TrackName}{TrackName}{/block:TrackName}{block:Artist} {Artist}{/block:Artist}{block:Album},
-                {Album}
-                {/block:Album}
-            </div><!-- / AUDIO -->
-
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}</div>{/block:Audio}
-            <!-- POST: AUDIO -->
-
-            {block:ContentSource}
-            <!-- {SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}"
-            width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
-            {/block:SourceLogo}
-            {block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
-            {/block:ContentSource}
-
+            {block:Audio}
+            <div class="audio">
+                {block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}
+                {block:TrackName}{TrackName}{/block:TrackName}{block:Artist} {Artist}{/block:Artist}{block:Album},{Album}{/block:Album}
+                {block:Caption}{Caption}{/block:Caption}
+            </div> <!-- / AUDIO -- >
+            {/block:Audio}
+            <!-- / POST: AUDIO -->
 
             <!-- POST: ASK -->
             {block:Answer}<table><tbody><tr><td><img src="{AskerPortraitURL-40}"/></td><td><b style="text-transform:uppercase;">{Asker} asked:</b> {Question}</td></tr></tbody></table>
-            <div class="answer">{Answer}</div>
+            {Answer}
             {/block:Answer}
         </div><!-- / POST: ASK -->
 
 
         <!-- FOOTER -->
-        <!-- GOD THIS SECTION IS A FUCKING MESS -->
 
         {block:Date}
         <div class="footer-wrapper">
@@ -459,10 +469,14 @@
 
         {/block:Date}
 
-        {/block:Posts}{block:PostNotes}<div class="permalink">{PostNotes}</div>{/block:PostNotes}
+        {/block:Posts}
+
+        <!-- POST NOTES -->
+        {block:PostNotes}<div class="post-notes">{PostNotes}</div>{/block:PostNotes}
+        <!-- / POST NOTES -->
 
 
-    </section>
+    </section> <!-- / POSTS -->
 
 
 
