@@ -3,9 +3,8 @@
 <head>
 
     <!-- TODO:
-         - music post (+spotify, bluh)
+         - nav links ( inline and floating options )
          - video post
-         - footer tooltip style
          - clean up your messy ass code smh
     -->
 
@@ -282,11 +281,11 @@
         a.tip:hover {
             position: relative;
         }
-        
+
         a.tip span {
             display: none;
         }
-        
+
         a.tip:hover span {
             box-shadow:0 2px 2px rgba(0,0,0,.2);
             font-size:.8rem;
@@ -363,6 +362,16 @@
         .chat{
             list-style:none;
             padding:0 0 6px 0;
+        }
+
+    /* ------------------ AUDIO ------------------ */
+
+        .tumblr_audio_player{
+            width:50px;
+            height:50px;
+            background:rgb(242,242,242);
+            margin-right:6px;
+            padding:10px;
         }
 
 
@@ -453,11 +462,13 @@
 
             <!-- POST: AUDIO -->
             {block:Audio}
-            <div class="audio">
-                {block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}
-                {block:TrackName}{TrackName}{/block:TrackName}{block:Artist} {Artist}{/block:Artist}{block:Album},{Album}{/block:Album}
-                {block:Caption}{Caption}{/block:Caption}
-            </div> <!-- / AUDIO -- >
+            <table><tr><td>
+                {block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}</td><td>
+
+                {block:TrackName}<em>{TrackName}</em>{/block:TrackName}<br/>{block:Artist}<strong>{Artist}</strong>{/block:Artist}<br/>{block:Album},{Album}{/block:Album}</td></tr></table>
+
+            {block:Caption}{Caption}{/block:Caption}
+
             {/block:Audio}
             <!-- / POST: AUDIO -->
 
@@ -513,4 +524,3 @@
 
 
 </div><!-- CONTENT -->
-    
