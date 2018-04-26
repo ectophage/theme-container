@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
 
-    <!-- TODO:
-         - music post (+spotify, bluh)
-         - video post
-         - footer tooltip style
-         - clean up your messy ass code smh
-    -->
-
     <!--   FUN HEADER STUFF; DON'T TOUCH THIS -->
 
     <meta charset="utf-8">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
 
     <link rel="stylesheet" href="application.css" media="screen">
+
+    <!-- BOOLEANS -->
+    <meta name="if:content background" content="0"/>
+    <meta name="if:content border" content="0"/>
+    <meta name="if:content shadow" content="0"/>
+    <meta name="if:sidebar background" content="0"/>
+    <meta name="if:sidebar border" content="0"/>
+    <meta name="if:sidebar shadow" content="0"/>
+    <meta name="if:nav links background" content="0"/>
+    <meta name="if:nav links border" content="0"/>
+    <meta name="if:nav links shadow" content="0"/>
+    <meta name="if:nav links text shadow" content="0"/>
 
     <!-- BACKGROUND THINGS -->
     <meta name="image:background" content=""/>
@@ -23,14 +28,23 @@
     <!-- LITTLE THINGS -->
     <meta name="color:accent" content="#009688"/>
     <meta name="text:font awesome tag decoration" content="fas fa-hashtag"/>
+    <meta name="text:font awesome nav icon" content="fas fa-asterisk"/>
 
-    <!-- CONTENT POSITION; DIMENSIONS -->
+    <!-- NAV LINKS -->
+    <meta name="text:nav links top" content="450px"/>
+    <meta name="text:nav links left" content="180px"/>
+    <meta name="text:nav links width" content="300px"/>
+    <meta name="text:nav links height" content="40px"/>
+
+    <meta name="color:nav links background" content="#ffffff"/>
+    <meta name="color:nav links border" content="#009688"/>
+
+    <!-- CONTENT -->
     <meta name="text:content top" content="100px"/>
     <meta name="text:content left" content="100px"/>
     <meta name="text:content width" content="400px"/>
     <meta name="text:content height" content="400px"/>
 
-    <!-- CONTENT FORMATTING -->
     <meta name="text:font size" content=".7rem"/>
     <meta name="color:content background" content="#ffffff"/>
     <meta name="color:content border" content="#009688"/>
@@ -39,21 +53,12 @@
     <meta name="color:link hover" content="#009688"/>
     <meta name="color:bold and italics" content="#000"/>
 
-    <!-- CONTENT BOOLEANS -->
-    <meta name="if:content background" content="0"/>
-    <meta name="if:content border" content="0"/>
-    <meta name="if:content shadow" content="0"/>
-    <meta name="if:sidebar background" content="0"/>
-    <meta name="if:sidebar border" content="0"/>
-    <meta name="if:sidebar shadow" content="0"/>
-
     <!-- SIDEBAR POSITION; DIMENSIONS -->
     <meta name="text:sidebar top" content="200px"/>
     <meta name="text:sidebar left" content="520px"/>
     <meta name="text:sidebar width" content="300px"/>
     <meta name="text:sidebar height" content="200px"/>
 
-    <!-- SIDEBAR FORMATTING -->
     <meta name="color:sidebar background" content="#f6f6f6"/>
     <meta name="color:sidebar border" content="#009688"/>
 
@@ -97,7 +102,7 @@
 
 /* ----------------------------------- DUMB TWEAKS ----------------------------------- */
 
-        /* fix padding & margin issues; make smooth transitions */
+    /* fix padding & margin issues; make smooth transitions */
         * {
             box-sizing: border-box;
             transition: .2s;
@@ -117,6 +122,11 @@
             background-color:{color:body background};
             font-family: Helvetica, sans serif;
             font-size:{text:font size};
+        }
+
+        ::selection{
+            background:{color:accent};
+            color:#fff;
         }
 
         p {
@@ -163,6 +173,24 @@
 
 /* ----------------------------------- CONTAINER SETUP ----------------------------------- */
 
+    /* ------------------ CONTENT ------------------ */
+
+        /* this looks so gross lmao I'm sorry */
+        #content {
+            position: absolute;
+            top: {text:content top};
+            left: {text:content left};
+            width: {text:content width};
+            height: {text:content height};
+            overflow-y: scroll;
+            overflow-x: visible !important;
+            padding: 15px;
+            {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
+            {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
+            text-align:left;
+            {block:ifContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifContentShadow}
+        }
+
     /* ------------------ SIDEBAR ------------------ */
 
         #sidebar {
@@ -177,7 +205,7 @@
             text-align:center;
             overflow-y: scroll;
             overflow-x:hidden;
-            {block:ifSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifSidebarShadow}
+            {block:ifSidebarShadow}box-shadow:0 4px 4px rgba(0,0,0,.2);{/block:ifSidebarShadow}
             z-index:100;
         }
 
@@ -200,7 +228,6 @@
             font-size:.7rem;
             margin:10px 4px;
             letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
         #sidebar h3{
@@ -209,44 +236,50 @@
             font-size:.7rem;
             margin:10px 4px;
             letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
-    /* ------------------ CONTENT ------------------ */
+    /* ------------------ NAV LINKS ------------------ */
 
-        /* this looks so gross lmao I'm sorry */
-        #content {
-            position: absolute;
-            top: {text:content top};
-            left: {text:content left};
-            width: {text:content width};
-            height: {text:content height};
-            overflow-y: scroll;
-            overflow-x: visible !important;
-            padding: 15px;
-            {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
-            {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
+        #nav-links{
+            top: {text:nav links top};
+            left: {text:nav links left};
+            width: {text:nav links width};
+            height: {text:nav links height};
+            {block:IfNavLinksBackground}background:{color:nav links background};{/block:IfNavLinksBackground}
+            position:absolute;
+            {block:IfNavLinksBorder}border: 4px solid {color:nav links border};{/block:IfNavLinksBorder}
+            padding:10px;
             text-align:left;
-            {block:ifContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifContentShadow}
+            {block:ifNavLinksShadow}box-shadow:0 4px 4px rgba(0,0,0,.2);{/block:ifNavLinksShadow}
+            z-index:100;
         }
+
+        /* the same jank that makes the footers work */
+        #nav-links .fas{
+            letter-spacing:20px;
+            color:{color:accent};
+            {block:ifNavLinksTextShadow}text-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifNavLinksTextShadow}
+        }
+
+
 
     /* ------------------ SCROLLBAR ------------------ */
 
-        ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
+            ::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
 
-        ::-webkit-scrollbar-track,
-        ::-webkit-scrollbar-corner {
-            background: transparent;
-        }
+            ::-webkit-scrollbar-track,
+            ::-webkit-scrollbar-corner {
+                background: transparent;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: {color:accent};
-            background-clip:padding-box;
-            border:2px solid rgba(0, 0, 0, 0);
-        }
+            ::-webkit-scrollbar-thumb {
+                background: {color:accent};
+                background-clip:padding-box;
+                border:2px solid rgba(0, 0, 0, 0);
+            }
 
     /* ------------------ FOOTER ------------------ */
 
@@ -282,12 +315,13 @@
         a.tip:hover {
             position: relative;
         }
-        
+
         a.tip span {
             display: none;
         }
-        
+
         a.tip:hover span {
+            text-align:left;
             box-shadow:0 2px 2px rgba(0,0,0,.2);
             font-size:.8rem;
             color:{color:link};
@@ -324,18 +358,20 @@
     /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
         .photoset {
-            width: 100%;
+            max-width:100%;
+            max-height:100%;
             margin: auto;
         }
 
         .pix img {
-            width: 100%;
+            max-width:100%;
+            max-height:100%;
         }
 
         .tmblr-full img {
-            width:100%;
+            max-width:100%;
+            max-height:100%;
             display: inline-block;
-            height: auto;
         }
 
     /* ------------------ QUOTE ------------------ */
@@ -365,6 +401,30 @@
             padding:0 0 6px 0;
         }
 
+    /* ------------------ AUDIO ------------------ */
+
+        .tumblr_audio_player{
+            width:50px;
+            height:50px;
+            background:rgb(242,242,242);
+            margin-right:6px;
+            padding:10px;
+        }
+
+    /* ------------------ "VIDEO" ------------------ */
+
+        .video{
+            text-align:center;
+        }
+
+        /* actually just all iframes but shhhhhh */
+        iframe{
+            display: inline-block;
+            margin:auto;
+            max-width:100%;
+            max-height:100%;
+        }
+
 
     </style>
 
@@ -373,7 +433,23 @@
 <body>
 
 
+<!-- NAV LINKS
+     pasta this line as many times as necessary, replacing URLGERE and LINK TEXT HERE respectively
+     <a href=URLHERE" class="tip"><i class="{text:font awesome nav icon}"></i><span>LINK TEXT HERE</span></a>
+     -->
+
+<div id="nav-links">
+    <a href=URLHERE" class="tip"><i class="{text:font awesome nav icon}"></i><span>LINK TEXT HERE</span></a>
+    <a href=URLHERE" class="tip"><i class="{text:font awesome nav icon}"></i><span>LINK TEXT HERE</span></a>
+    <a href=URLHERE" class="tip"><i class="{text:font awesome nav icon}"></i><span>LINK TEXT HERE</span></a>
+    <a href=URLHERE" class="tip"><i class="{text:font awesome nav icon}"></i><span>LINK TEXT HERE</span></a>
+</div>
+
+<!-- / NAV LINKS -->
+
+
 <!-- SIDEBAR -->
+
 <div id="sidebar"><h2>{title}</h2>
     {description}
 
@@ -393,15 +469,22 @@
         {block:Posts}
         <div class="entry {block:IndexPage}b{select:post size}{/block:IndexPage}{block:PermalinkPage}b{select:permalink post size}{/block:PermalinkPage}" id="{PostID}">
 
-            {block:Text}<div class="txt">{block:Title}<h1>{Title}</h1>{/block:Title}{Body}</div>{/block:Text}
 
+            <!-- POST: TEXT -->
+            {block:Text}<div class="txt">{block:Title}<h1>{Title}</h1>{/block:Title}{Body}</div>{/block:Text}
+            <!-- / POST: TEXT -->
+
+
+            <!-- POST: LINK -->
             {block:Link}<div class="txt"><a href="{URL}" class="link" {Target}><h3 style="margin-top:0;">{Name}</h3></a>
             {block:Description}{Description}{/block:Description}</div>{/block:Link}
+            <!-- / POST: LINK -->
 
+            <!-- POST: PHOTO -->
             {block:Photo}<center><div class="pix">{LinkOpenTag}<img src="{PhotoURL-HighRes}">{LinkCloseTag}</div></center>
 
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Photo}
-
+            {block:Caption}{Caption}{/block:Caption}{/block:Photo}
+            <!-- / POST: PHOTO -->
 
             <!-- POST: PHOTOSET -->
             {block:Photoset}
@@ -422,6 +505,7 @@
             {/block:Photoset}
             <!-- / POST: PHOTOSET -->
 
+
             <!-- POST: QUOTE -->
             {block:Quote}
             <div class="quote-wrapper">
@@ -433,33 +517,39 @@
             {/block:Quote}
             <!-- / POST: QUOTE -->
 
+
             <!-- POST: CHAT  -->
             {block:Chat}
             {block:Title}<h1>{Title}</h1>{/block:Title}
-                <div class="chat">
-                    {block:Lines}<li style="list-style-type:none;">
-                    {block:Label}<b>{Label}</b>{/block:Label}
-                    {Line}</li>{/block:Lines}
-                </div>
+            <div class="chat">
+                {block:Lines}<li>
+                {block:Label}<b>{Label}</b>{/block:Label}
+                {Line}</li>{/block:Lines}
+            </div>
             {/block:Chat}
             <!-- / POST: CHAT -->
+
 
             <!-- POST: VIDEO -->
             {block:Video}
             <div class="video">{Video-500}</div>
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}
+            {block:Caption}{Caption}{/block:Caption}
             {/block:Video}
             <!-- / POST: VIDEO -->
 
+
             <!-- POST: AUDIO -->
             {block:Audio}
-            <div class="audio">
-                {block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}
-                {block:TrackName}{TrackName}{/block:TrackName}{block:Artist} {Artist}{/block:Artist}{block:Album},{Album}{/block:Album}
-                {block:Caption}{Caption}{/block:Caption}
-            </div> <!-- / AUDIO -- >
+            <table><tr><td>
+                {block:AudioPlayer}{AudioPlayerWhite}{/block:AudioPlayer}</td><td>
+
+                {block:TrackName}<em>{TrackName}</em>{/block:TrackName}<br/>{block:Artist}<strong>{Artist}</strong>{/block:Artist}<br/>{block:Album},{Album}{/block:Album}</td></tr></table>
+
+            {block:Caption}{Caption}{/block:Caption}
+
             {/block:Audio}
             <!-- / POST: AUDIO -->
+
 
             <!-- POST: ASK -->
             {block:Answer}<table><tbody><tr><td><img src="{AskerPortraitURL-40}"/></td><td><b style="text-transform:uppercase;">{Asker} asked:</b> {Question}</td></tr></tbody></table>
@@ -513,4 +603,3 @@
 
 
 </div><!-- CONTENT -->
-    
