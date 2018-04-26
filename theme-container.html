@@ -269,12 +269,37 @@
             margin-bottom:6px;
             box-shadow:0 2px 2px rgba(0,0,0,.2);
             font-size:1rem;
-            letter-spacing:20px;
         }
 
         .footer .fas{
             color:#fff !important;
             text-shadow:0 2px 2px rgba(0,0,0,.4);
+            letter-spacing:20px;
+        }
+
+    /* ------------------ TOOLTIPS ------------------ */
+
+        a.tip:hover {
+            position: relative;
+        }
+        
+        a.tip span {
+            display: none;
+        }
+        
+        a.tip:hover span {
+            box-shadow:0 2px 2px rgba(0,0,0,.2);
+            font-size:.8rem;
+            color:{color:link};
+            background:{color:content background};
+            padding:5px 10px;
+            display: block;
+            z-index: 100;
+            left:0;
+            top:20px;
+            position: absolute;
+            text-decoration: none;
+            overflow:visible !important;
         }
 
     /* ------------------ POST NOTES ------------------ */
@@ -354,7 +379,7 @@
 
     {block:Pagination}
     <div id="pagination"><br/>
-        {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-angle-left"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;{/block:PreviousPage}
+        {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-angle-left"></i></a>&nbsp;&nbsp;&nbsp;{/block:PreviousPage}
         {block:NextPage}<a href="{NextPage}"><i class="fas fa-angle-right"></i></a>{/block:NextPage}
     </div><!-- PAGINATION -->
     {/block:Pagination}
@@ -449,20 +474,20 @@
         <div class="footer-wrapper">
             <div class="footer">
                 <!-- PERMALINK -->
-                <a href="{Permalink}" title="permalink"><i class="fas fa-link"></i></a>
+                <a href="{Permalink}" class="tip"><i class="fas fa-link"></i><span>permalink</span></a>
 
                 <!-- NOTES -->
-                <a href="{Permalink}" title="{NoteCountWithLabel}"><i class="fas fa-sticky-note"></i></a>
+                <a href="{Permalink}" class="tip"><i class="fas fa-sticky-note"></i><span>{NoteCountWithLabel}</span></a>
 
                 <!-- DATE -->
-                <a href="{Permalink}" title="posted {TimeAgo}"><i class="fas fa-calendar"></i></a>
+                <a href="{Permalink}" class="tip"><i class="fas fa-calendar"></i><span>posted {TimeAgo}</span></a>
 
                 <!-- REBLOGGED FROM SECTION --->
                 {block:RebloggedFrom}
                 <!-- REBLOGGED FROM -->
-                <a href="{ReblogParentURL}" title="reblogged from {ReblogParentName}"><i class="fas fa-retweet"></i></a>
+                <a href="{ReblogParentURL}" class="tip"><i class="fas fa-retweet"></i><span>reblogged&nbsp;from {ReblogParentName}</span></a>
                 <!-- SOURCE -->
-                <a href="{ReblogRootURL}" title="posted by {ReblogRootName}"><i class="fas fa-code"></i></a>
+                <a href="{ReblogRootURL}" class="tip"><i class="fas fa-code"></i><span>posted&nbsp;by {ReblogRootName}</span></a>
                 {/block:RebloggedFrom}
 
             </div> <!-- / FOOTER -->
@@ -488,3 +513,4 @@
 
 
 </div><!-- CONTENT -->
+    
