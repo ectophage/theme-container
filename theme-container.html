@@ -4,7 +4,6 @@
 
     <!-- TODO:
          - nav links ( inline and floating options )
-         - video post
          - clean up your messy ass code smh
     -->
 
@@ -176,7 +175,7 @@
             text-align:center;
             overflow-y: scroll;
             overflow-x:hidden;
-            {block:ifSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifSidebarShadow}
+            {block:ifSidebarShadow}box-shadow:0 4px 4px rgba(0,0,0,.2);{/block:ifSidebarShadow}
             z-index:100;
         }
 
@@ -199,7 +198,6 @@
             font-size:.7rem;
             margin:10px 4px;
             letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
         #sidebar h3{
@@ -208,7 +206,6 @@
             font-size:.7rem;
             margin:10px 4px;
             letter-spacing:1px;
-            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
     /* ------------------ CONTENT ------------------ */
@@ -374,6 +371,13 @@
             padding:10px;
         }
 
+    /* ------------------ "VIDEO" ------------------ */
+
+        /* actually just all iframes but shhhhhh */
+        iframe{
+            width:100%;
+        }
+
 
     </style>
 
@@ -402,15 +406,22 @@
         {block:Posts}
         <div class="entry {block:IndexPage}b{select:post size}{/block:IndexPage}{block:PermalinkPage}b{select:permalink post size}{/block:PermalinkPage}" id="{PostID}">
 
-            {block:Text}<div class="txt">{block:Title}<h1>{Title}</h1>{/block:Title}{Body}</div>{/block:Text}
 
+            <!-- POST: TEXT -->
+            {block:Text}<div class="txt">{block:Title}<h1>{Title}</h1>{/block:Title}{Body}</div>{/block:Text}
+            <!-- / POST: TEXT -->
+
+
+            <!-- POST: LINK -->
             {block:Link}<div class="txt"><a href="{URL}" class="link" {Target}><h3 style="margin-top:0;">{Name}</h3></a>
             {block:Description}{Description}{/block:Description}</div>{/block:Link}
+            <!-- / POST: LINK -->
 
+            <!-- POST: PHOTO -->
             {block:Photo}<center><div class="pix">{LinkOpenTag}<img src="{PhotoURL-HighRes}">{LinkCloseTag}</div></center>
 
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}{/block:Photo}
-
+            {block:Caption}{Caption}{/block:Caption}{/block:Photo}
+            <!-- / POST: PHOTO -->
 
             <!-- POST: PHOTOSET -->
             {block:Photoset}
@@ -431,6 +442,7 @@
             {/block:Photoset}
             <!-- / POST: PHOTOSET -->
 
+
             <!-- POST: QUOTE -->
             {block:Quote}
             <div class="quote-wrapper">
@@ -442,23 +454,26 @@
             {/block:Quote}
             <!-- / POST: QUOTE -->
 
+
             <!-- POST: CHAT  -->
             {block:Chat}
             {block:Title}<h1>{Title}</h1>{/block:Title}
                 <div class="chat">
-                    {block:Lines}<li style="list-style-type:none;">
+                    {block:Lines}<li>
                     {block:Label}<b>{Label}</b>{/block:Label}
                     {Line}</li>{/block:Lines}
                 </div>
             {/block:Chat}
             <!-- / POST: CHAT -->
 
+
             <!-- POST: VIDEO -->
             {block:Video}
-            <div class="video">{Video-500}</div>
-            {block:Caption}<div class="cap">{Caption}</div>{/block:Caption}
+            {Video-500}
+            {block:Caption}{Caption}{/block:Caption}
             {/block:Video}
             <!-- / POST: VIDEO -->
+
 
             <!-- POST: AUDIO -->
             {block:Audio}
@@ -471,6 +486,7 @@
 
             {/block:Audio}
             <!-- / POST: AUDIO -->
+
 
             <!-- POST: ASK -->
             {block:Answer}<table><tbody><tr><td><img src="{AskerPortraitURL-40}"/></td><td><b style="text-transform:uppercase;">{Asker} asked:</b> {Question}</td></tr></tbody></table>
@@ -524,3 +540,4 @@
 
 
 </div><!-- CONTENT -->
+    
