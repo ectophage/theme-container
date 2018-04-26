@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 
+    <!-- TODO:
+         - music post (+spotify, bluh)
+         - video post
+         - footer tooltip style
+         - clean up your messy ass code smh
+    -->
+
     <!--   FUN HEADER STUFF; DON'T TOUCH THIS -->
 
     <meta charset="utf-8">
@@ -107,9 +114,9 @@
 
         body {
             background-image: url({image:background});
-        background-color:{color:body background};
-        font-family: Helvetica, sans serif;
-        font-size:{text:font size};
+            background-color:{color:body background};
+            font-family: Helvetica, sans serif;
+            font-size:{text:font size};
         }
 
         p {
@@ -118,28 +125,28 @@
 
         a {
             text-decoration: none;
-        color: {color:link};
+            color: {color:link};
         }
 
         a:hover {
-        color: {color:link hover};
+            color: {color:link hover};
         }
 
         blockquote {
-        border-left: 1px solid {color:accent};
-        padding: 0 0 0 10px;
-        margin: 0 0 0 10px;
+            border-left: 1px solid {color:accent};
+            padding: 0 0 0 10px;
+            margin: 0 0 0 10px;
         }
 
         i,
         em {
             font-weight: 100;
-        color: {color:bold and italics};
+            color: {color:bold and italics};
         }
 
         b,
         strong {
-        color: {color:bold and italics};
+            color: {color:bold and italics};
         }
 
         h1{
@@ -154,25 +161,24 @@
             font-size:.9rem;
         }
 
-
 /* ----------------------------------- CONTAINER SETUP ----------------------------------- */
 
-        /* ------------------ SIDEBAR ------------------ */
+    /* ------------------ SIDEBAR ------------------ */
 
         #sidebar {
-        top: {text:sidebar top};
-        left: {text:sidebar left};
-        width: {text:sidebar width};
-        height: {text:sidebar height};
-        {block:IfSidebarBackground}background:{color:sidebar background};{/block:IfSidebarBackground}
-        position:absolute;
-        {block:IfSidebarBorder}border: 4px solid {color:sidebar border};{/block:IfSidebarBorder}
-        padding:10px;
-        text-align:center;
-        overflow-y: scroll;
-        overflow-x:hidden;
-        {block:ifSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifSidebarShadow}
-        z-index:100;
+            top: {text:sidebar top};
+            left: {text:sidebar left};
+            width: {text:sidebar width};
+            height: {text:sidebar height};
+            {block:IfSidebarBackground}background:{color:sidebar background};{/block:IfSidebarBackground}
+            position:absolute;
+            {block:IfSidebarBorder}border: 4px solid {color:sidebar border};{/block:IfSidebarBorder}
+            padding:10px;
+            text-align:center;
+            overflow-y: scroll;
+            overflow-x:hidden;
+            {block:ifSidebarShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifSidebarShadow}
+            z-index:100;
         }
 
         /* basically the footer but smaller */
@@ -180,51 +186,51 @@
             color: #fff;
             text-transform:uppercase;
             font-size:.7rem;
-        background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
-        border-radius:4px;
-        margin:4px -5px;
-        padding:5px;
-        letter-spacing:1px;
-        box-shadow:0 2px 2px rgba(0,0,0,0);
+            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+            border-radius:4px;
+            margin:4px -5px;
+            padding:5px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
         #sidebar h2{
-        color: {color:accent};
-        text-transform:uppercase;
-        font-size:.7rem;
-        margin:10px 4px;
-        letter-spacing:1px;
-        box-shadow:0 2px 2px rgba(0,0,0,0);
+            color: {color:accent};
+            text-transform:uppercase;
+            font-size:.7rem;
+            margin:10px 4px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
         #sidebar h3{
-        color: {color:text};
-        text-transform:uppercase;
-        font-size:.7rem;
-        margin:10px 4px;
-        letter-spacing:1px;
-        box-shadow:0 2px 2px rgba(0,0,0,0);
+            color: {color:text};
+            text-transform:uppercase;
+            font-size:.7rem;
+            margin:10px 4px;
+            letter-spacing:1px;
+            box-shadow:0 2px 2px rgba(0,0,0,0);
         }
 
-        /* ------------------ CONTENT ------------------ */
+    /* ------------------ CONTENT ------------------ */
 
         /* this looks so gross lmao I'm sorry */
         #content {
             position: absolute;
-        top: {text:content top};
-        left: {text:content left};
-        width: {text:content width};
-        height: {text:content height};
-        overflow-y: scroll;
-        overflow-x: visible !important;
-        padding: 15px;
-        {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
-        {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
-        text-align:left;
-        {block:ifContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifContentShadow}
+            top: {text:content top};
+            left: {text:content left};
+            width: {text:content width};
+            height: {text:content height};
+            overflow-y: scroll;
+            overflow-x: visible !important;
+            padding: 15px;
+            {block:IfContentBorder}border: 4px solid {color:content border};{/block:IfContentBorder}
+            {block:IfContentBackground}background:{color:content background};{/block:IfContentBackground}
+            text-align:left;
+            {block:ifContentShadow}box-shadow:0 2px 2px rgba(0,0,0,.2);{/block:ifContentShadow}
         }
 
-        /* ------------------ SCROLLBAR ------------------ */
+    /* ------------------ SCROLLBAR ------------------ */
 
         ::-webkit-scrollbar {
             width: 0;
@@ -237,60 +243,60 @@
         }
 
         ::-webkit-scrollbar-thumb {
-        background: {color:accent};
-        background-clip:padding-box;
-        border:2px solid rgba(0, 0, 0, 0);
+            background: {color:accent};
+            background-clip:padding-box;
+            border:2px solid rgba(0, 0, 0, 0);
         }
 
-/* ------------------ FOOTER ------------------ */
+    /* ------------------ FOOTER ------------------ */
 
-    .footer-wrapper {
-        color:#fff;
-        text-align:center;
-        margin:6px -6px 50px -6px;
-    }
+        .footer-wrapper {
+            color:#fff;
+            text-align:center;
+            margin:6px -6px 50px -6px;
+        }
 
-    /* jank ass margin fix for last post */
-    .footer-wrapper:last-of-type{
-        margin-bottom:0;
-    }
+        /* jank ass margin fix for last post */
+        .footer-wrapper:last-of-type{
+            margin-bottom:0;
+        }
 
-    .footer{
-        color: #fff;
-        background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
-        border-radius:10px;
-        padding:10px 0 10px 20px;
-        margin-bottom:6px;
-        box-shadow:0 2px 2px rgba(0,0,0,.2);
-        font-size:1rem;
-        letter-spacing:20px;
-    }
+        .footer{
+            color: #fff;
+            background:linear-gradient(to top right, {color:footer gradient left},{color:footer gradient right});
+            border-radius:10px;
+            padding:10px 0 10px 20px;
+            margin-bottom:6px;
+            box-shadow:0 2px 2px rgba(0,0,0,.2);
+            font-size:1rem;
+            letter-spacing:20px;
+        }
 
-    .footer .fas{
-        color:#fff !important;
-        text-shadow:0 2px 2px rgba(0,0,0,.4);
-    }
+        .footer .fas{
+            color:#fff !important;
+            text-shadow:0 2px 2px rgba(0,0,0,.4);
+        }
 
     /* ------------------ POST NOTES ------------------ */
 
-    .post-notes ul,
-    .post-notes ol,
-    .post-notes li {
-        list-style-type: square;
-        margin-left:-10px;
-    }
+        .post-notes ul,
+        .post-notes ol,
+        .post-notes li {
+            list-style-type: square;
+            margin-left:-10px;
+        }
 
     /* ------------------ PAGINATION ------------------ */
 
-    #pagination .fas{
-        color:{color:link};
-        font-size:1.2rem;
-        text-shadow:0 2px 2px rgba(0,0,0,.2);
-    }
+        #pagination .fas{
+            color:{color:link};
+            font-size:1.2rem;
+            text-shadow:0 2px 2px rgba(0,0,0,.2);
+        }
 
 /* ----------------------------------- POST STYLING ----------------------------------- */
 
-        /* ------------------ PHOTOS & PHOTOSETS ------------------ */
+    /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
         .photoset {
             width: 100%;
@@ -307,7 +313,7 @@
             height: auto;
         }
 
-        /* ------------------ QUOTE ------------------ */
+    /* ------------------ QUOTE ------------------ */
 
         /* I don't know if the wrapper is entirely necessary but I'm using it anyway */
         .quote-wrapper .fas{
@@ -327,12 +333,13 @@
             text-align:left;
         }
 
-        /* ------------------ CHAT ------------------ */
+    /* ------------------ CHAT ------------------ */
 
-        .chat {
-            padding:10px 0px 10px 0px;
+        .chat{
+            list-style:none;
+            padding:0 0 6px 0;
         }
-        
+
 
     </style>
 
